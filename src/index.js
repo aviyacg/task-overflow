@@ -1,1 +1,1 @@
-console.log("Its alive")
+console.log('Its alive');
