@@ -25,8 +25,10 @@ export function addTask(task) {
   const DELETE = document.createElement('button');
   DELETE.classList.add('delete');
   TASK.appendChild(DELETE);
-
-  document.querySelector('.main').appendChild(TASK);
+  // insert task before new task button
+  const MAIN = document.querySelector('.main');
+  const NEW_TASK_BUTTON = document.querySelector('.new-task-button');
+  MAIN.insertBefore(TASK, NEW_TASK_BUTTON);
 }
 
 export function removeTask(id) {
