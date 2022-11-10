@@ -34,6 +34,27 @@ export function readTodoList(id) {
   return todoList;
 }
 
+if (!localStorage.getItem('idList')) {
+  localStorage.setItem('idList', JSON.stringify([]));
+}
+
+function addToIdList(id) {
+  const idList = JSON.parse(localStorage.getItem('idList'));
+  if (idList instanceof Array && !idList.includes(id)) {
+    idList.push(id);
+    localStorage.setItem('idList', JSON.stringify(idList));
+  }
+}
+
+function removeFromIdList(id) {
+  const idList = JSON.parse(localStorage.getItem('idList'));
+  if (idList instanceof Array && !idList.includes(id)) {
+    const index = idList.findIndex((currentId) => currentId === id);
+    if (index !== -1) { idList.splice(index, 1); }
+    localStorage.setItem('idList', JSON.stringify(idList));
+  }
+}
+
 export function writeTodoList(todoList) {
   // write all tasks to local storage
   todoList.taskList.forEach((task) => {
@@ -48,5 +69,8 @@ export function writeTodoList(todoList) {
     title: todoList.title,
     taskIdList,
   };
+  // write rawTodoList to local storage
   localStorage.setItem(todoList.id, JSON.stringify(rawTodoList));
+  // write id to idList
+  addToIdList(todoList.id);
 }
