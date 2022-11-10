@@ -55,6 +55,11 @@ function removeFromIdList(id) {
   }
 }
 
+export function getIdList() {
+  const idList = localStorage.getItem('idList');
+  return JSON.parse(idList);
+}
+
 export function writeTodoList(todoList) {
   // write all tasks to local storage
   todoList.taskList.forEach((task) => {
