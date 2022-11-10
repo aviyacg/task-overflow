@@ -79,3 +79,8 @@ export function writeTodoList(todoList) {
   // write id to idList
   addToIdList(todoList.id);
 }
+
+export function deleteTodoList(id) {
+  localStorage.removeItem(id);
+  removeFromIdList(id);
+}
