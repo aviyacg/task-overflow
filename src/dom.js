@@ -1,3 +1,5 @@
+import { getIdList, readTodoList } from './storage';
+
 // main content functions
 export function addTask(task) {
   const TASK = document.createElement('div');
@@ -95,7 +97,16 @@ export function loadPage() {
   document.body.appendChild(MAIN);
 
   // nav content
-  // load todoLists from storage
-  // add todolists buttons to nav
   // add new todolist button
+  const NEW_LIST_BUTTON = document.createElement('button');
+  NEW_LIST_BUTTON.classList.add('new-list-button');
+  NEW_LIST_BUTTON.textContent = 'create new list';
+  NAV.appendChild(NEW_LIST_BUTTON);
+  // load todoLists ids from storage
+  const idList = getIdList();
+  // add all todoList buttons to nav
+  idList.forEach((id) => {
+    const todoList = readTodoList(id);
+    addTodoList(todoList);
+  });
 }
