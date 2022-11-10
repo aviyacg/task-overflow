@@ -56,7 +56,17 @@ export function loadTodoList(todoList) {
 }
 
 // nav content functions
+export function addTodoList(todoList) {
+  const LIST_BUTTON = document.createElement('div');
+  LIST_BUTTON.classList.add('list-button');
+  LIST_BUTTON.textContent = todoList.title;
+  LIST_BUTTON.dataset.id = todoList.id;
 
+  // append button before new list button
+  const NAV = document.querySelector('.nav');
+  const NEW_LIST_BUTTON = document.querySelector('.new-list-button');
+  NAV.insertBefore(LIST_BUTTON, NEW_LIST_BUTTON);
+}
 // general dom functions
 export function loadPage() {
   // layout divs
