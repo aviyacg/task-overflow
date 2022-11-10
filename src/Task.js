@@ -1,6 +1,6 @@
 export default class Task {
-  constructor(title, id, projectId, done = false, dueDate = 'no-due-date') {
-    this.title = title;
+  constructor(details, id, projectId, done = false, dueDate = 'no-due-date') {
+    this.details = details;
     this.id = id;
     this.projectId = projectId;
     // optional parameters
