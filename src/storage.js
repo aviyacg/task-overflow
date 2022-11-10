@@ -14,11 +14,14 @@ export function uniqeId() {
 }
 
 export function readTodoList(id) {
+  // check if TodoList exist
   let rawTodoList = localStorage.getItem(id);
   if (!rawTodoList) { return false; }
 
+  // parse the raw todoList to a TodoList Object
   rawTodoList = JSON.parse(rawTodoList);
   const todoList = new TodoList(rawTodoList.title, id);
+  // add tasks to the todoList
   rawTodoList.taskList.forEach((taskId) => {
     let rawTask = localStorage.getItem(taskId);
     if (rawTask) {
@@ -31,19 +34,19 @@ export function readTodoList(id) {
   return todoList;
 }
 
-export function writeProject(project) {
+export function writeTodoList(todoList) {
   // write all tasks to local storage
-  project.taskList.forEach((task) => {
+  todoList.taskList.forEach((task) => {
     localStorage.setItem(task.id, JSON.stringify(task));
   });
 
   // convert each task in task list to it's id
-  const taskIdList = project.taskList.map((task) => task.id);
+  const taskIdList = todoList.taskList.map((task) => task.id);
 
   // create a raw todoList and write it to local storage
   const rawTodoList = {
-    title: project.title,
+    title: todoList.title,
     taskIdList,
   };
-  localStorage.setItem(project.id, JSON.stringify(rawTodoList));
+  localStorage.setItem(todoList.id, JSON.stringify(rawTodoList));
 }
