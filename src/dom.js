@@ -1,3 +1,4 @@
+// main content functions
 export function addTask(task) {
   const TASK = document.createElement('div');
   TASK.classList.add('task');
@@ -28,6 +29,15 @@ export function addTask(task) {
   document.querySelector('.main').appendChild(TASK);
 }
 
+export function removeTask(id) {
+  const task = document.querySelector(`data-id="${id}"`);
+  if (task) {
+    task.remove();
+    return true;
+  }
+  return false;
+}
+
 export function loadTodoList(todoList) {
   const MAIN = document.querySelector('.main');
   // add title div
@@ -45,6 +55,9 @@ export function loadTodoList(todoList) {
   MAIN.appendChild(ADD_TASK_BUTTON);
 }
 
+// nav content functions
+
+// general dom functions
 export function loadPage() {
   // layout divs
   const HEADER = document.createElement('div');
