@@ -69,6 +69,15 @@ export function addTodoList(todoList) {
   const NEW_LIST_BUTTON = document.querySelector('.new-list-button');
   NAV.insertBefore(LIST_BUTTON, NEW_LIST_BUTTON);
 }
+
+export function removeTodoList(id) {
+  const todoList = document.querySelector(`data-id="${id}"`);
+  if (todoList) {
+    todoList.remove();
+    return true;
+  }
+  return false;
+}
 // general dom functions
 export function loadPage() {
   // layout divs
