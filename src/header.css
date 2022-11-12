@@ -1,0 +1,14 @@
+.header{
+  font-size: 2rem;
+  font-weight: bold;
+  padding: var(--pad);
+  text-align: center;
+  background-color: rgba(212, 69, 69, 0.8);
+
+  transition: 1s;
+}
+
+.header:hover{
+  background-color: rgba(212, 69, 69, 0.95);
+  letter-spacing: 10px;
+}
