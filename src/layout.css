@@ -1,5 +1,6 @@
 :root{
   --pad: 8px;
+  --shadow: rgba(100, 100, 100, .5)
 }
 
 body{
@@ -9,7 +10,7 @@ body{
   min-height: 100vh;
 
   display: grid;
-  grid-template-columns: 1fr 9fr;
+  grid-template-columns: 1fr 8fr;
   grid-template-rows: 1fr 10fr;
 }
 

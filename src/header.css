@@ -4,6 +4,7 @@
   padding: var(--pad);
   text-align: center;
   background-color: rgba(212, 69, 69, 0.8);
+  box-shadow: 1px 1px 1px 1px var(--shadow);
 
   transition: 1s;
 }
