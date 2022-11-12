@@ -59,6 +59,26 @@ export function loadTodoList(todoList) {
   MAIN.appendChild(ADD_TASK_BUTTON);
 }
 
+export function newTaskForm() {
+  const FORM = document.createElement('div');
+  FORM.classList.add('new-task-form');
+
+  const INPUT = document.createElement('input');
+  INPUT.classList.add('details-input');
+  FORM.appendChild(INPUT);
+
+  const ADD = document.createElement('button');
+  ADD.classList.add('add-button');
+  ADD.textContent = 'Add';
+  FORM.appendChild(ADD);
+
+  const CANCEL = document.createElement('button');
+  CANCEL.classList.add('cancel-button');
+  CANCEL.textContent = 'Cancel';
+  FORM.appendChild(CANCEL);
+
+  document.querySelector('.main').appendChild(FORM);
+}
 // nav content functions
 export function addTodoList(todoList) {
   const LIST_BUTTON = document.createElement('div');
@@ -79,6 +99,27 @@ export function removeTodoList(id) {
     return true;
   }
   return false;
+}
+
+export function newListForm() {
+  const FORM = document.createElement('div');
+  FORM.classList.add('new-list-form');
+
+  const INPUT = document.createElement('input');
+  INPUT.classList.add('title-input');
+  FORM.appendChild(INPUT);
+
+  const ADD = document.createElement('button');
+  ADD.classList.add('add-button');
+  ADD.textContent = 'Add';
+  FORM.appendChild(ADD);
+
+  const CANCEL = document.createElement('button');
+  CANCEL.classList.add('cancel-button');
+  CANCEL.textContent = 'Cancel';
+  FORM.appendChild(CANCEL);
+
+  document.querySelector('.nav').appendChild(FORM);
 }
 // general dom functions
 export function loadPage() {
