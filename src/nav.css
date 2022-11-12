@@ -1,0 +1,26 @@
+.nav{
+  background-color: rgba(100, 250, 100, .7);
+  box-shadow: 1px 1px 1px 1px var(--shadow);
+
+  transition: 1s;
+}
+
+.nav:hover{
+  background-color: rgba(100, 250, 100, .9);
+}
+
+.nav > button{
+  background-color: transparent;
+  width: 12vw;
+  padding: var(--pad);
+  border: none;
+
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.nav > button:hover{
+  background-color: rgba(100, 100, 100, .2);
+  border: none;
+  transition: 200ms;
+}
