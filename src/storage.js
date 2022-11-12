@@ -22,11 +22,17 @@ export function readTodoList(id) {
   rawTodoList = JSON.parse(rawTodoList);
   const todoList = new TodoList(rawTodoList.title, id);
   // add tasks to the todoList
-  rawTodoList.taskList.forEach((taskId) => {
+  rawTodoList.taskIdList.forEach((taskId) => {
     let rawTask = localStorage.getItem(taskId);
     if (rawTask) {
       rawTask = JSON.parse(rawTask);
-      const task = new Task(...rawTask);
+      const task = new Task(
+        rawTask.details,
+        rawTask.id,
+        rawTask.projectId,
+        rawTask.done,
+        rawTask.dueDate,
+      );
       todoList.addTask(task);
     }
   });
