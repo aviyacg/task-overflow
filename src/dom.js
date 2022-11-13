@@ -81,7 +81,7 @@ export function newTaskForm() {
 }
 // nav content functions
 export function addTodoList(todoList) {
-  const LIST_BUTTON = document.createElement('div');
+  const LIST_BUTTON = document.createElement('button');
   LIST_BUTTON.classList.add('list-button');
   LIST_BUTTON.textContent = todoList.title;
   LIST_BUTTON.dataset.id = todoList.id;
