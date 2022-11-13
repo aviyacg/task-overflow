@@ -24,7 +24,7 @@ export function addNewTask(details, date, listId) {
 }
 
 export function deleteTask(id, listId) {
-  storage.deleteTask(id);
+  storage.deleteTodoList(id);
 
   const todoList = storage.readTodoList(listId);
   todoList.removeTask(id);

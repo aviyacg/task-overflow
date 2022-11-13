@@ -1,5 +1,5 @@
 import { getIdList, readTodoList } from './storage';
-import * as index from './index';
+import * as controler from './index';
 import editIcon from './imgs/editing.png';
 import deleteIcon from './imgs/bin.png';
 
@@ -36,6 +36,12 @@ export function addTask(task) {
   const DELETEICON = new Image();
   DELETEICON.src = deleteIcon;
   DELETE.appendChild(DELETEICON);
+  DELETE.addEventListener('click', (e) => {
+    const taskId = parseInt(e.target.parentNode.parentNode.dataset.taskId);
+    const listId = parseInt(document.querySelector('.title').dataset.todoListId);
+
+    controler.deleteTask(taskId, listId);
+  });
   TASK.appendChild(DELETE);
   // insert task before new task button
   const MAIN = document.querySelector('.main');
@@ -44,7 +50,7 @@ export function addTask(task) {
 }
 
 export function removeTask(id) {
-  const task = document.querySelector(`data-id="${id}"`);
+  const task = document.querySelector(`[data-task-id="${id}"]`);
   if (task) {
     task.remove();
     return true;
@@ -79,7 +85,7 @@ export function newTaskForm() {
 
     document.querySelector('.new-task-form').remove();
 
-    index.addNewTask(details, date, listId);
+    controler.addNewTask(details, date, listId);
   });
   FORM.appendChild(ADD);
 
