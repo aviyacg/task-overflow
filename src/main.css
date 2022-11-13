@@ -3,7 +3,7 @@
   padding: var(--pad);
 }
 
-.main > div{
+.main > *{
   margin: calc(var(--pad)/2);
   padding: var(--pad);
   box-shadow: 0px 0px 1px 0px var(--shadow);
@@ -49,6 +49,15 @@
 
 .task > button > img{
   width: 1.2rem;
+}
+
+.add-task-button{
+  background-color: var(--gold);
+  border: none;
+
+  font-weight: bold;
+  display: block;
+  width: calc(100% - var(--pad));
 }
 
 
