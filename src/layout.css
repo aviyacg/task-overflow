@@ -1,6 +1,13 @@
 :root{
   --pad: 8px;
-  --shadow: rgba(100, 100, 100, .5)
+
+  --shadow: rgba(100, 100, 100, .5);
+  --blue: #4056a1;
+  --light-blue: #c5cbe3;
+  --red: #f13c2d;
+  --gold: #d79922;
+  --off-white: #efe2ba;
+
 }
 
 body{
