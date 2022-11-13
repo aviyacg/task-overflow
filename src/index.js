@@ -12,3 +12,23 @@ dom.loadPage();
 
 const todo = storage.readTodoList(7);
 dom.loadTodoList(todo);
+
+export function addNewTask(details, date, listId) {
+  const newTask = new Task(details, storage.uniqeId(), listId, false, date);
+  const todoList = storage.readTodoList(listId);
+
+  todoList.addTask(newTask);
+  storage.writeTodoList(todoList);
+
+  dom.addTask(newTask);
+}
+
+export function deleteTask(id, listId) {
+  storage.deleteTask(id);
+
+  const todoList = storage.readTodoList(listId);
+  todoList.removeTask(id);
+  storage.writeTodoList(todoList);
+
+  dom.removeTask(id);
+}

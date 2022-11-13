@@ -1,4 +1,5 @@
 import { getIdList, readTodoList } from './storage';
+import * as index from './index';
 import editIcon from './imgs/editing.png';
 import deleteIcon from './imgs/bin.png';
 
@@ -38,7 +39,7 @@ export function addTask(task) {
   TASK.appendChild(DELETE);
   // insert task before new task button
   const MAIN = document.querySelector('.main');
-  const NEW_TASK_BUTTON = document.querySelector('.new-task-button');
+  const NEW_TASK_BUTTON = document.querySelector('.add-task-button');
   MAIN.insertBefore(TASK, NEW_TASK_BUTTON);
 }
 
@@ -68,6 +69,18 @@ export function newTaskForm() {
   const ADD = document.createElement('button');
   ADD.classList.add('add-button');
   ADD.textContent = 'Add';
+  ADD.addEventListener('click', () => {
+    const detailsInput = document.querySelector('.details-input');
+    const dateInput = document.querySelector('.date-input');
+
+    const details = detailsInput.value;
+    const date = new Date(dateInput.value);
+    const listId = parseInt(document.querySelector('.title').dataset.todoListId);
+
+    document.querySelector('.new-task-form').remove();
+
+    index.addNewTask(details, date, listId);
+  });
   FORM.appendChild(ADD);
 
   const CANCEL = document.createElement('button');
