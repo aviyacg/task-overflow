@@ -1,7 +1,16 @@
 import { getIdList, readTodoList } from './storage';
-import * as controler from './index';
+import * as storage from './storage';
 import editIcon from './imgs/editing.png';
 import deleteIcon from './imgs/bin.png';
+
+export function removeTask(id) {
+  const task = document.querySelector(`[data-task-id="${id}"]`);
+  if (task) {
+    task.remove();
+    return true;
+  }
+  return false;
+}
 
 // main content functions
 export function addTask(task) {
@@ -38,24 +47,16 @@ export function addTask(task) {
   DELETE.appendChild(DELETEICON);
   DELETE.addEventListener('click', (e) => {
     const taskId = parseInt(e.target.parentNode.parentNode.dataset.taskId);
-    const listId = parseInt(document.querySelector('.title').dataset.todoListId);
-
-    controler.deleteTask(taskId, listId);
+    const isDeleted = storage.removeTask(taskId);
+    if (isDeleted) {
+      removeTask(taskId);
+    }
   });
   TASK.appendChild(DELETE);
   // insert task before new task button
   const MAIN = document.querySelector('.main');
   const NEW_TASK_BUTTON = document.querySelector('.add-task-button');
   MAIN.insertBefore(TASK, NEW_TASK_BUTTON);
-}
-
-export function removeTask(id) {
-  const task = document.querySelector(`[data-task-id="${id}"]`);
-  if (task) {
-    task.remove();
-    return true;
-  }
-  return false;
 }
 
 export function newTaskForm() {
@@ -83,9 +84,11 @@ export function newTaskForm() {
     const date = new Date(dateInput.value);
     const listId = parseInt(document.querySelector('.title').dataset.todoListId);
 
-    document.querySelector('.new-task-form').remove();
-
-    controler.addNewTask(details, date, listId);
+    const newTask = storage.addNewTask(details, date, listId);
+    if (newTask) {
+      document.querySelector('.new-task-form').remove();
+      addTask(newTask);
+    }
   });
   FORM.appendChild(ADD);
 

@@ -41,9 +41,9 @@ export function readTodoList(id) {
 }
 
 function readTask(id) {
-  const rawTask = localStorage.getItem(id);
+  let rawTask = localStorage.getItem(id);
   if (!rawTask) { return false; }
-
+  rawTask = JSON.parse(rawTask);
   const task = new Task(
     rawTask.details,
     id,
@@ -112,6 +112,7 @@ export function addNewTask(details, date, listId) {
 
   const newTask = new Task(details, uniqeId(), listId, false, date);
   todoList.addTask(newTask);
+  writeTodoList(todoList);
   return newTask;
 }
 
@@ -120,7 +121,9 @@ export function removeTask(id) {
   if (!task) { return false; }
 
   const todoList = readTodoList(task.listId);
+  if (!todoList) { return false; }
   todoList.removeTask(id);
   writeTodoList(todoList);
+  deleteItem(id);
   return true;
 }
