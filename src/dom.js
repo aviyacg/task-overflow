@@ -1,6 +1,7 @@
 import * as storage from './storage';
 import editIcon from './imgs/editing.png';
 import deleteIcon from './imgs/bin.png';
+import checkMark from './imgs/check-mark.png';
 
 export function removeTask(id) {
   const task = document.querySelector(`[data-task-id="${id}"]`);
@@ -20,6 +21,22 @@ export function addTask(task) {
   // checkbox
   const CHECKBOX = document.createElement('div');
   CHECKBOX.classList.add('checkbox');
+  if (task.done) {
+    const img = new Image();
+    img.src = checkMark;
+    CHECKBOX.appendChild(img);
+  }
+  CHECKBOX.addEventListener('click', () => {
+    if (CHECKBOX.classList.contains('checked')) {
+      CHECKBOX.replaceChildren();
+    } else {
+      const img = new Image();
+      img.src = checkMark;
+      CHECKBOX.appendChild(img);
+    }
+
+    CHECKBOX.classList.toggle('checked');
+  });
   TASK.appendChild(CHECKBOX);
   // details
   const DETAILS = document.createElement('div');

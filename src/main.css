@@ -33,7 +33,15 @@
   width: 1rem;
 
   border: 1px solid black;
-  border-radius: 50%;
+  border-radius: 2px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkbox img{
+  width: 1rem;
 }
 
 .details{
