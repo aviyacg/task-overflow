@@ -1,4 +1,3 @@
-import { getIdList, readTodoList } from './storage';
 import * as storage from './storage';
 import editIcon from './imgs/editing.png';
 import deleteIcon from './imgs/bin.png';
@@ -103,8 +102,11 @@ export function newTaskForm() {
   document.querySelector('.main').appendChild(FORM);
 }
 
-export function loadTodoList(todoList) {
+export function loadTodoList(listId) {
   const MAIN = document.querySelector('.main');
+  const todoList = storage.readTodoList(listId);
+  // remove all main children
+  MAIN.replaceChildren();
   // add title div
   const TITLE = document.createElement('div');
   TITLE.classList.add('title');
@@ -131,6 +133,9 @@ export function addTodoList(todoList) {
   LIST_BUTTON.classList.add('list-button');
   LIST_BUTTON.textContent = todoList.title;
   LIST_BUTTON.dataset.id = todoList.id;
+  LIST_BUTTON.addEventListener('click', () => {
+    loadTodoList(todoList.id);
+  });
 
   // append button before new list button
   const NAV = document.querySelector('.nav');
@@ -198,10 +203,10 @@ export function loadPage() {
   });
   NAV.appendChild(NEW_LIST_BUTTON);
   // load todoLists ids from storage
-  const idList = getIdList();
+  const idList = storage.getIdList();
   // add all todoList buttons to nav
   idList.forEach((id) => {
-    const todoList = readTodoList(id);
+    const todoList = storage.readTodoList(id);
     addTodoList(todoList);
   });
 }
