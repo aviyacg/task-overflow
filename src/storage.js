@@ -29,7 +29,7 @@ export function readTodoList(id) {
       const task = new Task(
         rawTask.details,
         rawTask.id,
-        rawTask.projectId,
+        rawTask.listId,
         rawTask.done,
         rawTask.dueDate,
       );
@@ -38,6 +38,21 @@ export function readTodoList(id) {
   });
 
   return todoList;
+}
+
+function readTask(id) {
+  const rawTask = localStorage.getItem(id);
+  if (!rawTask) { return false; }
+
+  const task = new Task(
+    rawTask.details,
+    id,
+    rawTask.listId,
+    rawTask.done,
+    rawTask.dueDate,
+  );
+
+  return task;
 }
 
 if (!localStorage.getItem('idList')) {
@@ -89,4 +104,23 @@ export function writeTodoList(todoList) {
 export function deleteItem(id) {
   localStorage.removeItem(id);
   removeFromIdList(id);
+}
+
+export function addNewTask(details, date, listId) {
+  const todoList = readTodoList(listId);
+  if (!todoList) { return false; }
+
+  const newTask = new Task(details, uniqeId(), listId, false, date);
+  todoList.addTask(newTask);
+  return newTask;
+}
+
+export function removeTask(id) {
+  const task = readTask(id);
+  if (!task) { return false; }
+
+  const todoList = readTodoList(task.listId);
+  todoList.removeTask(id);
+  writeTodoList(todoList);
+  return true;
 }
