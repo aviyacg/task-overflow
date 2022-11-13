@@ -1,5 +1,5 @@
 .main{
-  background-color: var(--off-white);
+  background-color: var(--gold);
   padding: var(--pad);
 }
 
@@ -25,7 +25,7 @@
   align-items: center;
   gap: var(--pad);
 
-  background-color: var(--gold);
+  background-color: var(--off-white);
 }
 
 .checkbox{
@@ -52,12 +52,42 @@
 }
 
 .add-task-button{
-  background-color: var(--gold);
+  background-color: var(--off-white);
   border: none;
 
   font-weight: bold;
   display: block;
   width: calc(100% - var(--pad));
+}
+
+.new-task-form{
+  background-color: var(--off-white);
+
+  display: flex;
+  gap: var(--pad);
+}
+
+.new-task-form > *{
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem;
+}
+
+.new-task-form > input:focus{
+  border-bottom: 1px solid black;
+  outline: none;
+}
+
+.details-input{
+  flex-grow: 1;
+}
+
+.add-button{
+  background-color: var(--light-blue);
+}
+
+.cancel-button{
+  background-color: var(--red);
 }
 
 

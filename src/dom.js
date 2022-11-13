@@ -51,6 +51,33 @@ export function removeTask(id) {
   return false;
 }
 
+export function newTaskForm() {
+  const FORM = document.createElement('div');
+  FORM.classList.add('new-task-form');
+
+  const DETAILS = document.createElement('input');
+  DETAILS.placeholder = 'task details...';
+  DETAILS.classList.add('details-input');
+  FORM.appendChild(DETAILS);
+
+  const DATE = document.createElement('input');
+  DATE.type = 'date';
+  DATE.classList.add('date-input');
+  FORM.appendChild(DATE);
+
+  const ADD = document.createElement('button');
+  ADD.classList.add('add-button');
+  ADD.textContent = 'Add';
+  FORM.appendChild(ADD);
+
+  const CANCEL = document.createElement('button');
+  CANCEL.classList.add('cancel-button');
+  CANCEL.textContent = 'Cancel';
+  FORM.appendChild(CANCEL);
+
+  document.querySelector('.main').appendChild(FORM);
+}
+
 export function loadTodoList(todoList) {
   const MAIN = document.querySelector('.main');
   // add title div
@@ -65,29 +92,14 @@ export function loadTodoList(todoList) {
   const ADD_TASK_BUTTON = document.createElement('button');
   ADD_TASK_BUTTON.classList.add('add-task-button');
   ADD_TASK_BUTTON.textContent = 'Add Task';
+  ADD_TASK_BUTTON.addEventListener('click', () => {
+    if (!document.querySelector('.new-task-form')) {
+      newTaskForm();
+    }
+  });
   MAIN.appendChild(ADD_TASK_BUTTON);
 }
 
-export function newTaskForm() {
-  const FORM = document.createElement('div');
-  FORM.classList.add('new-task-form');
-
-  const INPUT = document.createElement('input');
-  INPUT.classList.add('details-input');
-  FORM.appendChild(INPUT);
-
-  const ADD = document.createElement('button');
-  ADD.classList.add('add-button');
-  ADD.textContent = 'Add';
-  FORM.appendChild(ADD);
-
-  const CANCEL = document.createElement('button');
-  CANCEL.classList.add('cancel-button');
-  CANCEL.textContent = 'Cancel';
-  FORM.appendChild(CANCEL);
-
-  document.querySelector('.main').appendChild(FORM);
-}
 // nav content functions
 export function addTodoList(todoList) {
   const LIST_BUTTON = document.createElement('button');
