@@ -1,4 +1,6 @@
 import { getIdList, readTodoList } from './storage';
+import editIcon from './imgs/editing.png';
+import deleteIcon from './imgs/bin.png';
 
 // main content functions
 export function addTask(task) {
@@ -12,6 +14,7 @@ export function addTask(task) {
   TASK.appendChild(CHECKBOX);
   // details
   const DETAILS = document.createElement('div');
+  DETAILS.classList.add('details');
   DETAILS.textContent = task.details;
   TASK.appendChild(DETAILS);
   // dueDate
@@ -22,10 +25,16 @@ export function addTask(task) {
   // edit button
   const EDIT = document.createElement('button');
   EDIT.classList.add('edit');
+  const EDITICON = new Image();
+  EDITICON.src = editIcon;
+  EDIT.appendChild(EDITICON);
   TASK.appendChild(EDIT);
   // delete button
   const DELETE = document.createElement('button');
   DELETE.classList.add('delete');
+  const DELETEICON = new Image();
+  DELETEICON.src = deleteIcon;
+  DELETE.appendChild(DELETEICON);
   TASK.appendChild(DELETE);
   // insert task before new task button
   const MAIN = document.querySelector('.main');
