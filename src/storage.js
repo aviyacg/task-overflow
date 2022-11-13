@@ -86,7 +86,7 @@ export function writeTodoList(todoList) {
   addToIdList(todoList.id);
 }
 
-export function deleteTodoList(id) {
+export function deleteItem(id) {
   localStorage.removeItem(id);
   removeFromIdList(id);
 }
