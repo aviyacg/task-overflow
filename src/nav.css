@@ -6,7 +6,7 @@
 }
 
 .nav:hover{
-  background-color: var(--gold);
+  background-color: var(--off-white);
 }
 
 .nav > button{
@@ -23,4 +23,28 @@
   background-color: rgba(100, 100, 100, .2);
   border: none;
   transition: 200ms;
+}
+
+.new-list-form{
+  background-color: var(--off-white);
+  box-shadow: 0px 0px 1px 0px var(--shadow);
+  padding: var(--pad);
+}
+
+.new-list-form input{
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid black;
+
+  width: 12vw;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.new-list-form button{
+  margin: var(--pad);
+  padding: var(--pad);
+  border: none;
+  font-weight: bold;
 }

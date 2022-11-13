@@ -163,6 +163,11 @@ export function loadPage() {
   const NEW_LIST_BUTTON = document.createElement('button');
   NEW_LIST_BUTTON.classList.add('new-list-button');
   NEW_LIST_BUTTON.textContent = 'create new list';
+  NEW_LIST_BUTTON.addEventListener('click', () => {
+    if (!document.querySelector('.new-list-form')) {
+      newListForm();
+    }
+  });
   NAV.appendChild(NEW_LIST_BUTTON);
   // load todoLists ids from storage
   const idList = getIdList();
