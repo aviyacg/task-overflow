@@ -6,6 +6,7 @@ import * as storage from './storage';
 import './layout.css';
 import './header.css';
 import './nav.css';
+import './main.css';
 
 dom.loadPage();
 
