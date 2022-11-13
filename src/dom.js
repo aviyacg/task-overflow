@@ -73,6 +73,9 @@ export function newTaskForm() {
   const CANCEL = document.createElement('button');
   CANCEL.classList.add('cancel-button');
   CANCEL.textContent = 'Cancel';
+  CANCEL.addEventListener('click', () => {
+    document.querySelector('.new-task-form').remove();
+  });
   FORM.appendChild(CANCEL);
 
   document.querySelector('.main').appendChild(FORM);
@@ -138,6 +141,9 @@ export function newListForm() {
   const CANCEL = document.createElement('button');
   CANCEL.classList.add('cancel-button');
   CANCEL.textContent = 'Cancel';
+  CANCEL.addEventListener('click', () => {
+    document.querySelector('.new-list-form').remove();
+  });
   FORM.appendChild(CANCEL);
 
   document.querySelector('.nav').appendChild(FORM);
