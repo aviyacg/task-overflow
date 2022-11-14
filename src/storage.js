@@ -55,6 +55,10 @@ function readTask(id) {
   return task;
 }
 
+function writeTask(task) {
+  localStorage.setItem(task.id, JSON.stringify(task));
+}
+
 if (!localStorage.getItem('idList')) {
   localStorage.setItem('idList', JSON.stringify([]));
 }
@@ -126,4 +130,12 @@ export function removeTask(id) {
   writeTodoList(todoList);
   deleteItem(id);
   return true;
+}
+
+export function toggleTask(id) {
+  const task = readTask(id);
+  if (task) {
+    task.toggleDone();
+    writeTask(task);
+  }
 }
