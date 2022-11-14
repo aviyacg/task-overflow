@@ -139,3 +139,9 @@ export function toggleTask(id) {
     writeTask(task);
   }
 }
+
+export function addNewTodoList(title) {
+  const newList = new TodoList(title, uniqeId());
+  writeTodoList(newList);
+  return newList;
+}

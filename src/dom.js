@@ -182,6 +182,15 @@ export function newListForm() {
   const ADD = document.createElement('button');
   ADD.classList.add('add-button');
   ADD.textContent = 'Add';
+  ADD.addEventListener('click', () => {
+    const inputValue = INPUT.value;
+    if (inputValue && inputValue !== '') {
+      const newList = storage.addNewTodoList(inputValue);
+      addTodoList(newList);
+      loadTodoList(newList.id);
+      document.querySelector('.new-list-form').remove();
+    }
+  });
   FORM.appendChild(ADD);
 
   const CANCEL = document.createElement('button');
