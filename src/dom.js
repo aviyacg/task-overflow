@@ -22,11 +22,13 @@ export function addTask(task) {
   const CHECKBOX = document.createElement('div');
   CHECKBOX.classList.add('checkbox');
   if (task.done) {
+    CHECKBOX.classList.add('checked');
     const img = new Image();
     img.src = checkMark;
     CHECKBOX.appendChild(img);
   }
   CHECKBOX.addEventListener('click', () => {
+    storage.toggleTask(task.id);
     if (CHECKBOX.classList.contains('checked')) {
       CHECKBOX.replaceChildren();
     } else {
